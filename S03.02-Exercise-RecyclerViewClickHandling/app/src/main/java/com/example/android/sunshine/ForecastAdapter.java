@@ -29,18 +29,15 @@ import android.widget.TextView;
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapterViewHolder> {
 
     private String[] mWeatherData;
+    private final ForecastAdapterOnClickHandler mClickHandler;
 
-    // TODO (3) Create a final private ForecastAdapterOnClickHandler called mClickHandler
+    public ForecastAdapter(ForecastAdapterOnClickHandler clickHandler) {
+        mClickHandler = clickHandler;
+    }
 
-    // TODO (1) Add an interface called ForecastAdapterOnClickHandler
+
     interface ForecastAdapterOnClickHandler{
         void onClick(String weatherForDay);
-    }
-    // TODO (2) Within that interface, define a void method that access a String as a parameter
-
-    // TODO (4) Add a ForecastAdapterOnClickHandler as a parameter to the constructor and store it in mClickHandler
-    public ForecastAdapter() {
-
     }
 
     // TODO (5) Implement OnClickListener in the ForecastAdapterViewHolder class
