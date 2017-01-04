@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * {@link ForecastAdapter} exposes a list of weather forecasts to a
@@ -43,7 +44,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     /**
      * Cache of the children views for a forecast list item.
      */
-    public class ForecastAdapterViewHolder extends RecyclerView.ViewHolder implements ForecastAdapterOnClickHandler{
+    public class ForecastAdapterViewHolder extends RecyclerView.ViewHolder implements ForecastAdapterOnClickHandler, View.OnClickListener {
         public final TextView mWeatherTextView;
 
         public ForecastAdapterViewHolder(View view) {
@@ -55,6 +56,13 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         @Override
         public void onClick(String weatherForDay) {
             mClickHandler.onClick(weatherForDay);
+        }
+
+        @Override
+        public void onClick(View view) {
+            CharSequence message = mWeatherTextView.getText();
+            Toast toast = Toast.makeText(view.getContext(), message ,Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
