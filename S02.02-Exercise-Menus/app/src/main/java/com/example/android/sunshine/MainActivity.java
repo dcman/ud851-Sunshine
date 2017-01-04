@@ -18,7 +18,11 @@ package com.example.android.sunshine;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.sunshine.data.SunshinePreferences;
 import com.example.android.sunshine.utilities.NetworkUtils;
@@ -97,10 +101,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.forecast, menu);
+        return true;
+    }
 
-
-    // TODO (5) Override onCreateOptionsMenu to inflate the menu for this Activity
-    // TODO (6) Return true to display the menu
-
-    // TODO (7) Override onOptionsItemSelected to handle clicks on the refresh button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_refresh){
+            mWeatherTextView.setText("");
+            Toast toast = Toast.makeText(getApplicationContext(),"Clicked refresh", Toast.LENGTH_SHORT);
+            toast.show();
+            loadWeatherData();
+        }
+        return true;
+    }
 }
