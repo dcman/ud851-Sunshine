@@ -225,6 +225,7 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             String location = SunshinePreferences.getPreferredWeatherLocation(this);
             Uri uri = Uri.parse("geo:0,0?q=" + location);
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
